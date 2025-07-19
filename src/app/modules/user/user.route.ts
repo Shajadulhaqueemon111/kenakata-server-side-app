@@ -14,7 +14,5 @@ route.get('/', userController.getAllUser);
 route.get('/:id', userController.getSingleUser);
 route.patch('/:_id', userController.updateUser);
 route.delete('/:_id', userController.deleteUser);
-route.delete('/:_id', userController.deleteUser);
-route.delete('/:_id', userController.deleteUser);
 
 export const userRouter = route;

@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { model, Schema } from 'mongoose';
 import { IUser } from './user.interface';
 import { Query } from 'mongoose';
+import bycript from 'bcryptjs';
+import config from '../../config';
 export const UserSchema = new Schema<IUser>(
   {
     name: {
@@ -38,6 +41,18 @@ export const UserSchema = new Schema<IUser>(
 
 UserSchema.pre(/^find/, function (this: Query<any, any>, next: () => void) {
   this.where({ isDeleted: false });
+  next();
+});
+UserSchema.pre('save', async function (next) {
+  const user = this;
+  user.password = await bycript.hash(
+    user.password,
+    Number(config.bcrypt_salt_rounds),
+  );
+  next();
+});
+UserSchema.post('save', function (doc, next) {
+  doc.password = '';
   next();
 });
 
