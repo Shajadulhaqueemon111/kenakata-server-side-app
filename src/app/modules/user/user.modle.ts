@@ -21,12 +21,16 @@ export const UserSchema = new Schema<IUser>(
     },
     profileImage: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
       enum: ['active', 'block'],
       default: 'active',
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user',
     },
 
     isDeleted: {

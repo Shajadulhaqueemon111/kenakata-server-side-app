@@ -13,3 +13,5 @@ route.patch(
   adminController.updateAdmin,
 );
 route.get('/:_id', adminController.deleteAdmin);
+
+export const AdminRout = route;

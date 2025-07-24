@@ -1,10 +1,10 @@
 import { Types } from 'mongoose';
 
-export interface TAdmin {
+export type TAdmin = {
   user: Types.ObjectId;
   name: string;
   email: string;
   phoneNumber: string;
-  profileImage?: string;
+  profileImage?: string; // required
   address: string;
-}
+};
