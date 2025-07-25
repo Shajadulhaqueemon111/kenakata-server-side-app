@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { userRouter } from '../modules/user/user.route';
 import { LoginRouetr } from '../modules/auth/auth.route';
 import { AdminRout } from '../modules/admin/admin.route';
+import { GrosaryRoute } from '../modules/grosaryproduct/grosarryproduct.route';
 
 const router = Router();
 
@@ -17,6 +18,10 @@ const moduleRouter = [
   {
     path: '/auth',
     route: LoginRouetr,
+  },
+  {
+    path: '/grosary-product',
+    route: GrosaryRoute,
   },
 ];
 
