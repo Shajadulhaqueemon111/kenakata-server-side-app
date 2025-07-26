@@ -6,15 +6,12 @@ import httpStatus from 'http-status';
 import config from '../config';
 import AppError from '../error/appError';
 
-
-
 cloudinary.config({
   cloud_name: config.cloudinary_cloud_name,
   api_key: config.cloudinary_api_key,
   api_secret: config.cloudinary_api_secret,
 });
 
-// ✅ Upload image using buffer (works in Vercel)
 export const sendImageToCloudinary = async (
   fileBuffer: Buffer,
   imageName: string,
@@ -46,6 +43,5 @@ export const sendImageToCloudinary = async (
   }
 };
 
-// ✅ Use memory storage (safe for Vercel)
 const storage = multer.memoryStorage();
 export const upload = multer({ storage });

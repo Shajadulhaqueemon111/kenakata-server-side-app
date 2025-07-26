@@ -3,6 +3,8 @@ import { userRouter } from '../modules/user/user.route';
 import { LoginRouetr } from '../modules/auth/auth.route';
 import { AdminRout } from '../modules/admin/admin.route';
 import { GrosaryRoute } from '../modules/grosaryproduct/grosarryproduct.route';
+import { orderRoutes } from '../modules/Order/order.route';
+import { paymentRoutes } from '../modules/payments/payment.route';
 
 const router = Router();
 
@@ -22,6 +24,14 @@ const moduleRouter = [
   {
     path: '/grosary-product',
     route: GrosaryRoute,
+  },
+  {
+    path: '/order',
+    route: orderRoutes,
+  },
+  {
+    path: '/payment',
+    route: paymentRoutes,
   },
 ];
 

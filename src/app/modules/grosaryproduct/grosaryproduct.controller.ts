@@ -1,17 +1,33 @@
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
+import { sendImageToCloudinary } from '../../utils/sendToimageCloudinary';
 import { GrosaryService } from './grosaryproduct.service';
 import httpStatus from 'http-status';
+
 const createGrosary = catchAsync(async (req, res) => {
   const payload = req.body;
+
+  // Check if there is an image file in the request
+  if (req.file?.buffer) {
+    // Upload image buffer to Cloudinary, assuming sendImageToCloudinary handles buffer upload
+    const imageUrl = await sendImageToCloudinary(
+      req.file.buffer,
+      `product-${Date.now()}`,
+    );
+    // Add Cloudinary image URL to payload
+    payload.image = imageUrl.secure_url;
+  }
+
   const result = await GrosaryService.createGrosaryProductIntoDB(payload);
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'create grosary product successfully',
+    message: ' grosary product create successfully',
     data: result,
   });
 });
+
 const getAllGrosary = catchAsync(async (req, res) => {
   const result = await GrosaryService.getAllGrosaryProductIntoDB();
   sendResponse(res, {
@@ -32,16 +48,30 @@ const getSingleGrosary = catchAsync(async (req, res) => {
   });
 });
 const updateGrosary = catchAsync(async (req, res) => {
-  const { _id } = req.params;
-  const payload = req.body;
-  const result = await GrosaryService.updateGrosaryProductIntoDB(_id, payload);
+  const { id } = req.params;
+  let payload = req.body;
+
+  if (req.file?.buffer) {
+    const fileBuffer = req.file.buffer;
+    const imageName = `product-${id}`;
+    const imageUrl = await sendImageToCloudinary(fileBuffer, imageName);
+
+    payload = {
+      ...payload,
+      image: imageUrl.secure_url,
+    };
+  }
+
+  const result = await GrosaryService.updateGrosaryProductIntoDB(id, payload);
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: ' grosary product update successfully',
+    message: 'Grosary product updated successfully',
     data: result,
   });
 });
+
 const deleteGrosary = catchAsync(async (req, res) => {
   const { _id } = req.params;
 

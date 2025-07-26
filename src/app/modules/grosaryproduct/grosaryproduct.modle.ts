@@ -19,6 +19,9 @@ export const GrosaryProductSchema = new Schema<TGrosaryproduct>(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+    },
     description: {
       type: String,
       required: true,

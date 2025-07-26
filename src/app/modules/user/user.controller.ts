@@ -67,7 +67,6 @@ const updateUser = catchAsync(async (req, res) => {
   const { _id } = req.params;
   const payload = req.body;
   if (req.file?.path) {
-    // ফাইল path থেকে Buffer তৈরি করা
     const fileBuffer = await fs.readFile(req.file.path);
 
     const imageName = `user-${_id}`;
@@ -98,8 +97,7 @@ const deleteUser = catchAsync(async (req, res) => {
 });
 const createAdmin = catchAsync(async (req, res) => {
   const { password, admin: adminData } = req.body;
-  console.log(req.body);
-  console.log('Admin Data:', adminData);
+
   const result = await userService.createAdminIntoDB(password, adminData);
 
   sendResponse(res, {
