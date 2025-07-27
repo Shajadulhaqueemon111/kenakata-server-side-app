@@ -10,14 +10,24 @@ const loginUser = catchAsync(async (req, res) => {
 
   const { accessToken, refressToken } = result;
   res.cookie('refreshToken', refressToken, {
-    secure: config.NODE_ENV === 'development',
+    secure: config.NODE_ENV === 'production',
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'none',
+    domain:
+      process.env.NODE_ENV === 'production'
+        ? 'my-kenakata-app.vercel.app'
+        : 'localhost',
+    path: '/',
   });
   res.cookie('accessToken', accessToken, {
-    secure: config.NODE_ENV === 'development',
+    secure: config.NODE_ENV === 'production',
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: 'none',
+    domain:
+      process.env.NODE_ENV === 'production'
+        ? 'my-kenakata-app.vercel.app'
+        : 'localhost',
+    path: '/',
   });
   sendResponse(res, {
     statusCode: httpSattus.OK,
