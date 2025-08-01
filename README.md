@@ -49,7 +49,7 @@ Kenakata is a full-featured e-commerce backend built with Node.js and Express.js
 
 ---
 
-## 📁 Project Structure
+
 
 ## 📁 Project Strure
 │
@@ -64,8 +64,30 @@ Kenakata is a full-featured e-commerce backend built with Node.js and Express.js
 ├── app.ts
 └── .env # Environment variables
 
+## ⚙️ Environment Variables Example
 
----
+PORT=
+
+DATABASE_URL=
+USER_NAME=
+USER_PASS=
+BCRYPT_SALT_ROUND=
+
+JWT_ACCESS_SECRET=
+JWT_ACCESS_EXPIRES_IN=
+JWT_REFRESH_SECRET=
+JWT_REFRESH_EXPIRES_IN=
+
+OPENAI_API_KEY=
+
+CLOUDINARY_NAME=
+CLOUDINARY_KEY=
+CLOUDINARY_SECRET=
+
+STORE_ID=
+SIGNATURE_KEY=
+PAYMENT_VERIFY_URL=
+PAYMENT_URL=
 
 ## 🚀 Getting Started
 
