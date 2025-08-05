@@ -6,6 +6,7 @@ const createZodGrosarySchema = z.object({
     category: z.string().nonempty('category is requered'),
     weight: z.string().nonempty('product weight is requered'),
     price: z.string().nonempty('peice is requered'),
+    rating: z.string().nonempty('peice is requered'),
     description: z.string().nonempty('description is requered'),
   }),
 });
@@ -14,6 +15,7 @@ const updateZodGrosarySchema = z.object({
     name: z.string().optional(),
     category: z.string().optional(),
     price: z.string().optional(),
+    rating: z.string().optional(),
     description: z.string().optional(),
   }),
 });

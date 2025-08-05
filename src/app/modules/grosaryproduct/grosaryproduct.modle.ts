@@ -26,6 +26,10 @@ export const GrosaryProductSchema = new Schema<TGrosaryproduct>(
       type: String,
       required: true,
     },
+    rating: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

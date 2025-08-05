@@ -5,6 +5,7 @@ import { AdminRout } from '../modules/admin/admin.route';
 import { GrosaryRoute } from '../modules/grosaryproduct/grosarryproduct.route';
 import { orderRoutes } from '../modules/Order/order.route';
 import { paymentRoutes } from '../modules/payments/payment.route';
+import { OfferRoute } from '../modules/OfferProduct/offer.route';
 
 const router = Router();
 
@@ -32,6 +33,10 @@ const moduleRouter = [
   {
     path: '/payment',
     route: paymentRoutes,
+  },
+  {
+    path: '/offer',
+    route: OfferRoute,
   },
 ];
 

@@ -7,6 +7,7 @@ export interface IUser {
   email: string;
   password: string;
   role: 'user' | 'admin';
+
   isDeleted: boolean;
 }
 export type TUserRole = keyof typeof USER_ROLE;

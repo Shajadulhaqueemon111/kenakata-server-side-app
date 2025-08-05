@@ -13,20 +13,12 @@ const loginUser = catchAsync(async (req, res) => {
     secure: config.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: 'none',
-    domain:
-      process.env.NODE_ENV === 'production'
-        ? 'my-kenakata-app.vercel.app'
-        : 'localhost',
     path: '/',
   });
   res.cookie('accessToken', accessToken, {
     secure: config.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: 'none',
-    domain:
-      process.env.NODE_ENV === 'production'
-        ? 'my-kenakata-app.vercel.app'
-        : 'localhost',
     path: '/',
   });
   sendResponse(res, {

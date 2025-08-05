@@ -18,7 +18,7 @@ const LoginUser = async (payload: TLogin) => {
     throw new AppError(httpStatus.BAD_REQUEST, 'Password cannot be undefined');
   }
   const user = await validUserForLogin(email);
-  console.log(user);
+
   const isPasswordMatched = await checkPassword(password, user.password);
   if (!isPasswordMatched) {
     throw new AppError(httpStatus.UNAUTHORIZED, 'Password is incorrect');

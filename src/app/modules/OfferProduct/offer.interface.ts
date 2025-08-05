@@ -1,9 +1,10 @@
-export type TGrosaryproduct = {
+export type IOfferProduct = {
   name: string;
   category: string;
-  weight: string;
-  image: string;
   price: string;
+  weight: string;
   description: string;
+  image: string;
   rating: string;
+  offerPercent: string;
 };
