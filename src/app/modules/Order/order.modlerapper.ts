@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+// modelMapper.ts
 import GrosaryProductModle from '../grosaryproduct/grosaryproduct.modle';
+import OfferProductModle from '../OfferProduct/offer.modle';
 
 export const modelMapper: Record<string, any> = {
-  grosaryProduct: GrosaryProductModle,
-
-  //   equipment: EquipmentModel,
-  // future a add korte paren: diagnostic: DiagnosticModel, surgical: SurgicalModel
+  grosaryproduct: GrosaryProductModle,
+  offerproduct: OfferProductModle,
 };

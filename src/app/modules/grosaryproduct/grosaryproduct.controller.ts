@@ -7,14 +7,12 @@ import httpStatus from 'http-status';
 const createGrosary = catchAsync(async (req, res) => {
   const payload = req.body;
 
-  // Check if there is an image file in the request
   if (req.file?.buffer) {
-    // Upload image buffer to Cloudinary, assuming sendImageToCloudinary handles buffer upload
     const imageUrl = await sendImageToCloudinary(
       req.file.buffer,
       `product-${Date.now()}`,
     );
-    // Add Cloudinary image URL to payload
+
     payload.image = imageUrl.secure_url;
   }
 

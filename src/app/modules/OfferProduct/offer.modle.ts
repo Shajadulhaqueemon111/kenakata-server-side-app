@@ -31,7 +31,7 @@ const OfferProductSchema = new Schema<IOfferProduct>({
 });
 
 const OfferProductModle = model<IOfferProduct>(
-  'OfferProduct',
+  'offerproduct',
   OfferProductSchema,
 );
 

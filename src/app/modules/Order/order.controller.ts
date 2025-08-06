@@ -16,15 +16,21 @@ export const createOrderController = async (req: Request, res: Response) => {
         message: 'Cart is empty or missing',
       });
     }
-
     const orderData = {
       user: { name, email, phone, address },
-      products: cartItems.map((item: any) => ({
-        product: item._id,
-        quantity: item.quantity,
-        model: 'grosaryProduct',
-        grosaryproduct: item,
-      })),
+      products: cartItems.map((item: any, index: number) => {
+        if (!item.model || typeof item.model !== 'string') {
+          throw new Error(
+            `Missing or invalid model for cart item at index ${index}`,
+          );
+        }
+
+        return {
+          product: item._id,
+          quantity: item.quantity,
+          model: item.model.toLowerCase(),
+        };
+      }),
     };
 
     const newOrder = await orderService.createOrder(orderData);
@@ -75,7 +81,7 @@ export const getAllOredrGrosaryProduct = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'All  ordered medicines fetched successfully',
+      message: 'All  ordered Product fetched successfully',
       data: result,
     });
   },
@@ -88,7 +94,7 @@ export const getSingleOredrGraryProduct = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'All Single  ordered medicines fetched successfully',
+      message: 'All Single  ordered product fetched successfully',
       data: result,
     });
   },

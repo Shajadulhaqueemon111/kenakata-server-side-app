@@ -37,7 +37,7 @@ export const GrosaryProductSchema = new Schema<TGrosaryproduct>(
 );
 
 const GrosaryProductModle = model<TGrosaryproduct>(
-  'Grosaryproduct',
+  'grosaryproduct',
   GrosaryProductSchema,
 );
 

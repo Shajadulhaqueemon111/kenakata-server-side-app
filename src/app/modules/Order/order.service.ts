@@ -12,6 +12,7 @@ const createOrder = async (orderData: any) => {
   const productDetails = await Promise.all(
     products.map(async (item: any) => {
       const Model = modelMapper[item.model];
+
       if (!Model) throw new Error(`Unknown product model: ${item.model}`);
 
       const product = await Model.findById(item.product);
@@ -29,6 +30,7 @@ const createOrder = async (orderData: any) => {
         category: product.category,
         weight: product.weight,
         quantity: item.quantity,
+        model: item.model,
         grosaryproduct: item.grosaryproduct || null,
       };
     }),

@@ -26,24 +26,44 @@ const OrderSchema: Schema = new Schema(
       phone: { type: String, required: true },
       address: { type: String, required: true },
     },
+    // products: [
+    //   {
+    //     _id: false,
+    //     product: {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: 'GrosaryProductModle',
+    //       required: true,
+    //       quantity: { type: Number, required: true },
+    //     },
+    //     quantity: {
+    //       type: Number,
+    //       required: true,
+    //     },
+    //     // grosaryproduct: {
+    //     //   type: mongoose.Schema.Types.ObjectId,
+    //     //   ref: 'User',
+    //     //   required: true,
+    //     // },
+    //   },
+    // ],
+
     products: [
       {
         _id: false,
         product: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Grosaryproduct',
           required: true,
-          quantity: { type: Number, required: true },
+          refPath: 'products.model', // ✅ Dynamic reference
+        },
+        model: {
+          type: String,
+          required: true,
+          enum: ['grosaryproduct', 'offerproduct'],
         },
         quantity: {
           type: Number,
           required: true,
         },
-        // grosaryproduct: {
-        //   type: mongoose.Schema.Types.ObjectId,
-        //   ref: 'User',
-        //   required: true,
-        // },
       },
     ],
     totalPrice: {

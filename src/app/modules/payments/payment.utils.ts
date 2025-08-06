@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 
@@ -48,7 +49,6 @@ export const veriFyPayment = async (tnxId: string) => {
 
     return response.data;
   } catch (error) {
-    console.error('Error in verifyPayment:', error);
     return null;
   }
 };
